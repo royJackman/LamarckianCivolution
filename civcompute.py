@@ -43,7 +43,7 @@ def dropoutLocs(n, k):
 # Output:           N/A
 ###############################################################################
 
-def defineModel(name, inputs, denseLayers, denseWidth, denseDelta, dropoutLayers, dropoutPercent, optim, activ, loss, random_seed):
+def defineModel(name, inputs, denseLayers, denseWidth, denseDelta, dropoutLayers, dropoutPercent, optim, activ, loss, random_seed=0):
     if dropoutLayers > denseLayers/2:
         print("More dropout layers than half dense, exiting")
         print("Dropouts " +  dropoutLayers + " / Dense " + denseLayers)
