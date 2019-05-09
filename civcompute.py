@@ -53,14 +53,14 @@ def defineModel(name, inputs, denseLayers, denseWidth, denseDelta, dropoutLayers
     model.add(Dense(denseWidth, input_shape=(inputs,)))
     for d in range(1,denseLayers):
         if d in drops:
-            model.add(Dropout(dropoutPercent, seed=random_seed, activation='sigmoid'))
+            model.add(Dropout(dropoutPercent, seed=random_seed))
         model.add(Dense(denseWidth - d * denseDelta))
     
     model.add(Dense(1, activation=activ))
 
     model.compile(optimizer=optim, loss=loss)
     
-    model.save(name+'.h5')
+    model.save('models/'+name+'.h5')
     del model
 
 ###############################################################################
@@ -90,8 +90,8 @@ def predict(name, input):
 # Output:   N/A      
 ###############################################################################
 
-def train(name, input, output):
+def train(name, data, output):
     model = load_model(name+'.h5')
-    model.fit(x=input, y=output, batch_size=10)
+    model.fit(x=data, y=output, batch_size=10)
     model.save(name+'.h5')
     del model

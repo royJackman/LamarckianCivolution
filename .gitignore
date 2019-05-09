@@ -1,2 +1,8 @@
 .vscode
 __pycache__
+testlua.py
+testpython.lua
+test.lua
+VikingBackup.lua
+vikingBackup
+models/*.h5
